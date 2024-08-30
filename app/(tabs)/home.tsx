@@ -2,6 +2,7 @@ import { StatusBar } from "expo-status-bar";
 import { Image, Text, View } from "react-native";
 import { heightPercentageToDP } from "react-native-responsive-screen";
 import { SafeAreaView } from "react-native-safe-area-context";
+import { Ionicons } from "@expo/vector-icons";
 
 export default function Home(){
     return (
@@ -57,6 +58,7 @@ export default function Home(){
                             display: "flex",
                             justifyContent: "center",
                             alignItems: "center",
+                            marginTop: 0.5,
                         }
                     }
                 >
@@ -66,11 +68,23 @@ export default function Home(){
                                 height: heightPercentageToDP(6),
                                 width: heightPercentageToDP(6),
                                 borderRadius: 9999,
+                                marginTop: 0.5,
                             }
                         }
                     />
-                    <View>
-                        
+                    <View
+                        style={
+                            {
+                                backgroundColor: "grey",
+                                borderRadius: 9999,
+                                display: "flex",
+                                justifyContent: "center",
+                                alignItems: "center",
+                                marginTop: 1,
+                            }
+                        }
+                    >
+                        <Ionicons name="notifications" size={30} color="#900"/>
                     </View>
                 </View>
             </View>
