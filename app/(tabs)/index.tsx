@@ -1,10 +1,4 @@
 import { Image, StyleSheet, Platform, View, Dimensions, Text, ViewBase, TouchableOpacity } from 'react-native';
-
-import { HelloWave } from '@/components/HelloWave';
-import ParallaxScrollView from '@/components/ParallaxScrollView';
-import { ThemedText } from '@/components/ThemedText';
-import { ThemedView } from '@/components/ThemedView';
-import AnimatedGradientBackground from '@/components/Background';
 import { useEffect, useRef } from 'react';
 import { StatusBar } from 'expo-status-bar';
 import { heightPercentageToDP, widthPercentageToDP } from 'react-native-responsive-screen';

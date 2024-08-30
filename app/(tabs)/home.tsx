@@ -75,18 +75,27 @@ export default function Home(){
                     <View
                         style={
                             {
-                                backgroundColor: "grey",
+                                backgroundColor: "light-grey",
                                 borderRadius: 9999,
                                 display: "flex",
                                 justifyContent: "center",
                                 alignItems: "center",
-                                marginTop: 1,
+                                borderWidth:3,
+                                borderColor: "#bababa",
+                                marginTop: 5,
+                                height:heightPercentageToDP(5.5),
+                                width:heightPercentageToDP(5.5)
                             }
                         }
                     >
-                        <Ionicons name="notifications" size={30} color="#900"/>
+                        <Ionicons name="notifications" size={30} color="grey"/>
                     </View>
                 </View>
+            </View>
+
+            {/*Image Slider */}
+            <View>
+                
             </View>
         </SafeAreaView>
     )
