@@ -1,5 +1,5 @@
 import { StatusBar } from "expo-status-bar";
-import { Text, View } from "react-native";
+import { Image, Text, View } from "react-native";
 import { heightPercentageToDP } from "react-native-responsive-screen";
 import { SafeAreaView } from "react-native-safe-area-context";
 
@@ -33,6 +33,7 @@ export default function Home(){
                             fontWeight: "bold",
                             color: "grey",
                             letterSpacing: 1,
+                            marginTop: 0.5,
                         }}
                     >
                         READY TO
@@ -43,11 +44,34 @@ export default function Home(){
                             fontWeight: "bold",
                             color: "red",
                             letterSpacing: 1,
+                            marginTop: 0.5,
                         }}
                     >
                         WORKOUT
                     </Text>
 
+                </View>
+                <View
+                    style={
+                        {
+                            display: "flex",
+                            justifyContent: "center",
+                            alignItems: "center",
+                        }
+                    }
+                >
+                    <Image source={require('@/assets/images/exerciseImages/avatar.png')}
+                        style={
+                            {
+                                height: heightPercentageToDP(6),
+                                width: heightPercentageToDP(6),
+                                borderRadius: 9999,
+                            }
+                        }
+                    />
+                    <View>
+                        
+                    </View>
                 </View>
             </View>
         </SafeAreaView>
