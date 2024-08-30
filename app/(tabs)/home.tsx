@@ -31,10 +31,21 @@ export default function Home(){
                         style={{
                             fontSize: heightPercentageToDP(4.5),
                             fontWeight: "bold",
-                            
+                            color: "grey",
+                            letterSpacing: 1,
                         }}
                     >
-                        Ready To
+                        READY TO
+                    </Text>
+                    <Text
+                        style={{
+                            fontSize: heightPercentageToDP(4.5),
+                            fontWeight: "bold",
+                            color: "red",
+                            letterSpacing: 1,
+                        }}
+                    >
+                        WORKOUT
                     </Text>
 
                 </View>
