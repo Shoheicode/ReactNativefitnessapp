@@ -85,7 +85,7 @@ export default function HomeScreen() {
             }
           >
             <TouchableOpacity
-              onPress={()=>router.push('/(tabs)/home')}
+              onPress={()=>router.push('../home')}
               style={{
                 height: heightPercentageToDP(7),
                 width: widthPercentageToDP(80),

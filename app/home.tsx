@@ -1,10 +1,27 @@
 import { StatusBar } from "expo-status-bar";
-import { Image, Text, View } from "react-native";
+import { Button, Image, Text, View } from "react-native";
 import { heightPercentageToDP } from "react-native-responsive-screen";
 import { SafeAreaView } from "react-native-safe-area-context";
 import { Ionicons } from "@expo/vector-icons";
+import ImageSlider from "@/components/ImageSlider";
+import { SignedIn, useUser, SignedOut, useAuth } from "@clerk/clerk-expo";
+import { Link } from "expo-router";
 
 export default function Home(){
+
+    const { user } = useUser()
+    const { signOut } = useAuth()
+
+    const handleLogout = async () => {
+        try {
+          await signOut();
+          // You can add additional logic here, such as navigation to a login screen
+          console.log('User logged out successfully');
+        } catch (error) {
+          console.error('Error logging out:', error);
+        }
+      };
+
     return (
         <SafeAreaView>
             <StatusBar style="dark" />
@@ -72,6 +89,7 @@ export default function Home(){
                             }
                         }
                     />
+
                     <View
                         style={
                             {
@@ -94,8 +112,33 @@ export default function Home(){
             </View>
 
             {/*Image Slider */}
+            <View
+                style={
+                    {
+                        marginTop: 20,
+                    }
+                }
+            >
+                <ImageSlider/>
+            </View>
+
             <View>
-                
+            <SignedIn>
+                <Text>Hello {user?.emailAddresses[0].emailAddress}</Text>
+                {/* <UserButton/> */}
+                <Button 
+                    onPress={handleLogout}
+                    title="Log Out"    
+                />
+            </SignedIn>
+            <SignedOut>
+                <Link href="/(auth)/sign-in">
+                <Text>Sign In</Text>
+                </Link>
+                <Link href="/(auth)/sign-up">
+                <Text>Sign Up</Text>
+                </Link>
+            </SignedOut>
             </View>
         </SafeAreaView>
     )
