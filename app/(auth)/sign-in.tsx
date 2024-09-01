@@ -1,7 +1,9 @@
 import { useSignIn } from '@clerk/clerk-expo'
 import { Link, useRouter } from 'expo-router'
-import { Text, TextInput, Button, View } from 'react-native'
+import { Text, TextInput, Button, View,StyleSheet, TouchableOpacity } from 'react-native'
 import React from 'react'
+import { heightPercentageToDP, widthPercentageToDP } from 'react-native-responsive-screen'
+//import { TouchableOpacity } from 'react-native-gesture-handler'
 
 export default function Page() {
   const { signIn, setActive, isLoaded } = useSignIn()
@@ -31,30 +33,100 @@ export default function Page() {
       }
     } catch (err: any) {
       console.error(JSON.stringify(err, null, 2))
+      //console.log("hi")
     }
   }, [isLoaded, emailAddress, password])
 
   return (
-    <View>
+    <View style={styles.container}>
+      <View
+        style={styles.inputContainer}
+      >
       <TextInput
+        style={
+          {
+            fontSize: widthPercentageToDP("7%")
+          }
+        }
         autoCapitalize="none"
         value={emailAddress}
         placeholder="Email..."
         onChangeText={(emailAddress) => setEmailAddress(emailAddress)}
       />
       <TextInput
+        style={
+          {
+            fontSize: widthPercentageToDP("7%")
+          }
+        }
         value={password}
         placeholder="Password..."
         secureTextEntry={true}
         onChangeText={(password) => setPassword(password)}
+        
       />
-      <Button title="Sign In" onPress={onSignInPress} />
-      <View>
-        <Text>Don't have an account?</Text>
-        <Link href="/sign-up">
-          <Text>Sign up</Text>
-        </Link>
+      <TouchableOpacity style={styles.button}
+          onPress={onSignInPress}
+        >
+          <Text style={styles.buttonText}>Sign In</Text>
+        </TouchableOpacity>
+      </View>
+      <View 
+        style={
+          styles.inputContainer
+        }
+      >
+        {/* <Button title="Sign In" onPress={onSignInPress} /> */}
+        <View
+          style={{
+            marginTop:widthPercentageToDP(5),
+          }}
+        >
+          <Text
+            style={
+              {
+                fontSize: heightPercentageToDP(2)
+              }
+            }
+          >Don't have an account?</Text>
+          {/* <Link href="/sign-up">
+            <Text>Sign up</Text>
+          </Link> */}
+          <TouchableOpacity style={styles.button}
+          onPress={()=>router.push('/sign-up')}
+          >
+            <Text style={styles.buttonText}>Sign up</Text>
+          </TouchableOpacity>
+        </View>
       </View>
     </View>
   )
 }
+
+const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+    alignItems: "center",
+    //justifyContent: "space-around",
+    padding: widthPercentageToDP("20%"),
+    backgroundColor: "#fff",
+  },
+  inputContainer:{
+    width: "100%",
+    height: heightPercentageToDP(10),
+    marginTop: heightPercentageToDP(8)
+  },
+  button: {
+    backgroundColor: "#01a5fc",
+    borderRadius: 25,
+    padding: widthPercentageToDP("3%"),
+    alignItems: "center",
+    marginTop: heightPercentageToDP("2.5%"),
+    width: '100%',
+  },
+  buttonText: {
+    color: "#fff",
+    fontWeight: "bold",
+    fontSize: widthPercentageToDP("4%"),
+  }
+})

@@ -3,10 +3,13 @@ import { TextInput, Button, View } from 'react-native'
 import { useSignUp } from '@clerk/clerk-expo'
 import { useRouter } from 'expo-router'
 
+
 export default function SignUpScreen() {
   const { isLoaded, signUp, setActive } = useSignUp()
   const router = useRouter()
 
+  const [firstName, setFirstName] = React.useState('')
+  const [lastName, setLastName] = React.useState('')
   const [emailAddress, setEmailAddress] = React.useState('')
   const [password, setPassword] = React.useState('')
   const [pendingVerification, setPendingVerification] = React.useState(false)
@@ -17,11 +20,18 @@ export default function SignUpScreen() {
       return
     }
 
+    
     try {
-      await signUp.create({
-        emailAddress,
-        password,
-      })
+        const completeSignUp = await signUp.create(
+        {
+            firstName,
+            lastName,
+            emailAddress: emailAddress,
+            password
+        }
+      )
+
+      signUp.firstName = firstName;
 
       await signUp.prepareEmailAddressVerification({ strategy: 'email_code' })
 
@@ -60,6 +70,17 @@ export default function SignUpScreen() {
     <View>
       {!pendingVerification && (
         <>
+          <TextInput
+            autoCapitalize="none"
+            value={firstName}
+            placeholder="First Name..."
+            onChangeText={(first) => setFirstName(first)}
+          />
+          <TextInput
+            value={lastName}
+            placeholder="Last Name..."
+            onChangeText={(last) => setLastName(last)}
+          />
           <TextInput
             autoCapitalize="none"
             value={emailAddress}

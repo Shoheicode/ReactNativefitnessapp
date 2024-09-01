@@ -1,13 +1,16 @@
 import { StatusBar } from "expo-status-bar";
-import { Button, Image, Text, View } from "react-native";
-import { heightPercentageToDP } from "react-native-responsive-screen";
+import { Button, Image, Text, View, StyleSheet } from "react-native";
+import { heightPercentageToDP, widthPercentageToDP } from "react-native-responsive-screen";
 import { SafeAreaView } from "react-native-safe-area-context";
 import { Ionicons } from "@expo/vector-icons";
 import ImageSlider from "@/components/ImageSlider";
 import { SignedIn, useUser, SignedOut, useAuth } from "@clerk/clerk-expo";
-import { Link } from "expo-router";
+import { Link, router } from "expo-router";
+import CoolSignInButton from "@/components/CoolSignInButton";
+import { Avatar } from '@rneui/themed';
 
 export default function Home(){
+    const size = 40
 
     const { user } = useUser()
     const { signOut } = useAuth()
@@ -79,35 +82,31 @@ export default function Home(){
                         }
                     }
                 >
-                    <Image source={require('@/assets/images/exerciseImages/avatar.png')}
-                        style={
-                            {
-                                height: heightPercentageToDP(6),
-                                width: heightPercentageToDP(6),
-                                borderRadius: 9999,
-                                marginTop: 0.5,
+                    <SignedOut>
+                        <CoolSignInButton
+                        onPress={()=>router.push('/(auth)/sign-in')}
+                        
+                        />
+                        <CoolSignInButton
+                            onPress={()=>router.push('/(auth)/sign-in')}
+                            title="Sign Up"
+                        />
+                    </SignedOut>
+                    <SignedIn>
+                        <Text
+                            style={
+                                {
+                                    marginBottom: 10,
+                                    fontSize:heightPercentageToDP(2)
+                                }
                             }
-                        }
-                    />
+                        >Welcome {user?.fullName}</Text>
 
-                    <View
-                        style={
-                            {
-                                backgroundColor: "light-grey",
-                                borderRadius: 9999,
-                                display: "flex",
-                                justifyContent: "center",
-                                alignItems: "center",
-                                borderWidth:3,
-                                borderColor: "#bababa",
-                                marginTop: 5,
-                                height:heightPercentageToDP(5.5),
-                                width:heightPercentageToDP(5.5)
-                            }
-                        }
-                    >
-                        <Ionicons name="notifications" size={30} color="grey"/>
-                    </View>
+                        <CoolSignInButton 
+                            onPress={handleLogout}
+                            title="Log Out"    
+                        />
+                    </SignedIn>
                 </View>
             </View>
 
@@ -116,30 +115,25 @@ export default function Home(){
                 style={
                     {
                         marginTop: 20,
+                        height: widthPercentageToDP(70)
                     }
                 }
             >
                 <ImageSlider/>
             </View>
-
-            <View>
-            <SignedIn>
-                <Text>Hello {user?.emailAddresses[0].emailAddress}</Text>
-                {/* <UserButton/> */}
-                <Button 
-                    onPress={handleLogout}
-                    title="Log Out"    
-                />
-            </SignedIn>
-            <SignedOut>
-                <Link href="/(auth)/sign-in">
-                <Text>Sign In</Text>
-                </Link>
-                <Link href="/(auth)/sign-up">
-                <Text>Sign Up</Text>
-                </Link>
-            </SignedOut>
-            </View>
         </SafeAreaView>
     )
 }
+const styles = StyleSheet.create({
+    placeholder: {
+      backgroundColor: '#e1e1e1',
+      borderRadius: 20,
+    },
+    iconContainer: {
+      backgroundColor: '#4a90e2',
+      borderRadius: 20,
+      justifyContent: 'center',
+      alignItems: 'center',
+    },
+  })
+
