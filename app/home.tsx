@@ -28,7 +28,7 @@ export default function Home(){
 
     return (
         <SafeAreaView>
-            <StatusBar style="dark" />
+            {/* <StatusBar style="dark" /> */}
             {/* punchline and avatar*/}
             <View
                 style={
@@ -89,7 +89,7 @@ export default function Home(){
                         
                         />
                         <CoolSignInButton
-                            onPress={()=>router.push('/(auth)/sign-in')}
+                            onPress={()=>router.push('/(auth)/sign-up')}
                             title="Sign Up"
                         />
                     </SignedOut>

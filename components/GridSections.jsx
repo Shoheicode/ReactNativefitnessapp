@@ -8,22 +8,22 @@ const list = [
     {
         name: "Chat Bot",
         source: require("../assets/images/exerciseImages/back.png"),
-        route: '../app/(tabs)/savedExercises',
+        route: '/(tabs)/savedExercises',
     },
     {
         name: "Saved Exercises",
         source: require("../assets/images/exerciseImages/back.png"),
-        route: '../app/(tabs)/savedExercises',
+        route: '/(tabs)/savedExercises',
     },
     {
         name: "Programs",
         source: require("../assets/images/exerciseImages/back.png"),
-        route: '../app/(tabs)/savedExercises',
+        route: '/(tabs)/savedExercises',
     },
     {
         name: "Sample Exercises",
         source: require("../assets/images/exerciseImages/back.png"),
-        route: '../app/(tabs)/savedExercises',
+        route: '/(tabs)/savedExercises',
     }
 ]
 
