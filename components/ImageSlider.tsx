@@ -20,7 +20,7 @@ export default function ImageSlider(){
         
         <Carousel
             width={widthPercentageToDP(100)}
-            height={widthPercentageToDP(70)}
+            height={heightPercentageToDP(40)}
             loop={true}
             autoPlay={true}
             data={sliderImages}
@@ -53,7 +53,7 @@ const SliderItem = ({item, index})=>{
             style={
                 {
                     width: widthPercentageToDP(100),
-                    height: widthPercentageToDP(70),
+                    height: heightPercentageToDP(40),
                     display:"flex",
                     alignItems:"center"
                 }
@@ -61,12 +61,14 @@ const SliderItem = ({item, index})=>{
         >
             
             <Image 
+                resizeMode="cover"
                 source={item} 
                 style={
                     {
                         width: widthPercentageToDP(100),
-                        height: widthPercentageToDP(70),
+                        height: heightPercentageToDP(40),
                         borderRadius: 25
+                        
                     }
                 }
                     
