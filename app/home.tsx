@@ -121,6 +121,16 @@ export default function Home(){
             >
                 <ImageSlider/>
             </View>
+
+            <View
+                style={
+                    {
+                        flex:1
+                    }
+                }
+            >
+                <GridSection></GridSection>
+            </View>
         </SafeAreaView>
     )
 }
