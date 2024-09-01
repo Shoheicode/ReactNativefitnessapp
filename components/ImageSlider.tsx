@@ -20,7 +20,7 @@ export default function ImageSlider(){
         
         <Carousel
             width={widthPercentageToDP(100)}
-            height={widthPercentageToDP(100)}
+            height={widthPercentageToDP(70)}
             loop={true}
             autoPlay={true}
             data={sliderImages}
@@ -53,7 +53,7 @@ const SliderItem = ({item, index})=>{
             style={
                 {
                     width: widthPercentageToDP(100),
-                    height: widthPercentageToDP(100),
+                    height: widthPercentageToDP(70),
                     display:"flex",
                     alignItems:"center"
                 }

@@ -7,6 +7,7 @@ import ImageSlider from "@/components/ImageSlider";
 import { SignedIn, useUser, SignedOut, useAuth } from "@clerk/clerk-expo";
 import { Link, router } from "expo-router";
 import CoolSignInButton from "@/components/CoolSignInButton";
+import GridSections from "@/components/GridSections"
 import { Avatar } from '@rneui/themed';
 
 export default function Home(){
@@ -125,11 +126,12 @@ export default function Home(){
             <View
                 style={
                     {
-                        flex:1
+                        flex:1,
+                        height: heightPercentageToDP(70)
                     }
                 }
             >
-                <GridSection></GridSection>
+                <GridSections/>
             </View>
         </SafeAreaView>
     )
