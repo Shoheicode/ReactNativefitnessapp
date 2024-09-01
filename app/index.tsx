@@ -120,8 +120,8 @@ export default function HomeScreen() {
 
 const styles = StyleSheet.create({
   imageWelcome:{
-    width: width,
-    height:height,
+    width: widthPercentageToDP(100),
+    height:heightPercentageToDP(100),
     position: "absolute"
   },
   linearGrad: {

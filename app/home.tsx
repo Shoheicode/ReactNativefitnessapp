@@ -116,7 +116,7 @@ export default function Home(){
                 style={
                     {
                         marginTop: 20,
-                        height: widthPercentageToDP(70)
+                        height: heightPercentageToDP(40)
                     }
                 }
             >
@@ -126,8 +126,7 @@ export default function Home(){
             <View
                 style={
                     {
-                        flex:1,
-                        height: heightPercentageToDP(70)
+                        display:"flex"
                     }
                 }
             >
