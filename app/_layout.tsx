@@ -49,7 +49,7 @@ export default function TabLayout() {
         <Stack 
           screenOptions={
             {
-              headerShown: false
+              headerShown: false,
             }
           }
         />
