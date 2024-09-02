@@ -28,7 +28,7 @@ export default function SavedExercises(){
 
     return (
         <SafeAreaView>
-            
+            a
             <StatusBar style="dark" />
             {/* punchline and avatar*/}
             <View
