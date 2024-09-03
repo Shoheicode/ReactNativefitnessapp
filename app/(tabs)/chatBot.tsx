@@ -71,7 +71,11 @@ export default function ChatBot() {
 
     return (
         <GiftedChat
-            
+            messages={messages}
+            onSend={newMessages => handleSendMessage(newMessages)}
+            user={{
+            _id: 1,
+            }}
         />
     );
 }
