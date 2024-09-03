@@ -11,7 +11,7 @@ import GridSections from "@/components/GridSections"
 import { Avatar } from '@rneui/themed';
 import { database } from "../firebase";
 import { useEffect } from "react";
-import { addDoc, collection } from "firebase/firestore";
+import { addDoc, collection, doc, setDoc } from "firebase/firestore";
 
 export default function SavedExercises(){
     const size = 40
@@ -21,12 +21,16 @@ export default function SavedExercises(){
 
     const accessFirebase = async ()=>{
         try {
-            const docRef = await addDoc(collection(database, "users"), {
-              first: "Ada",
-              last: "Lovelace",
-              born: 1815
-            });
-            console.log("Document written with ID: ", docRef.id);
+            const userDocRef = doc(collection(database, 'users'), user?.id)
+            await setDoc(userDocRef, {
+                name: user?.firstName
+            })
+            // const docRef = await addDoc(collection(database, "users"), {
+            //   first: "Ada",
+            //   last: "Lovelace",
+            //   born: 1815
+            // });
+            console.log("Document written with ID: ", userDocRef.id);
           } catch (e) {
             console.error("Error adding document: ", e);
           }
