@@ -4,11 +4,12 @@ import OpenAI from "openai";
 import { useCallback, useEffect, useState } from "react";
 import { Text, View } from "react-native";
 import { GiftedChat } from 'react-native-gifted-chat';
+import {OPEN_API_KEY} from '@env'
 //import "./App.css";
 
 export default function ChatBot() {
     // Your OpenAI API key
-    const API_KEY = process.env.OPENAI_API_KEY;
+    const API_KEY = process.env.OPENAI_API_KEY + "";
     // Setting the primary prompt as the initial state
     const [messages, setMessages] = useState([{}]);
 
