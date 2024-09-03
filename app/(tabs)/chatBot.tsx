@@ -1,5 +1,6 @@
 // Importing useState
 import { SignedIn, useUser } from "@clerk/clerk-expo";
+import OpenAI from "openai";
 import { useCallback, useEffect, useState } from "react";
 import { Text, View } from "react-native";
 import { GiftedChat } from 'react-native-gifted-chat';
@@ -31,71 +32,45 @@ export default function ChatBot() {
 
     const chatData = async (userMessage) => {
         try {
-            console.log(`${API_KEY}`)
-          const response = await fetch(
-            "https://api.openai.com/v1/chat/completions",
-            {
-              method: "POST",
-              headers: {
-                "Content-Type": "application/json",
-                Authorization: `Bearer ${API_KEY}`,
-              },
-              body: JSON.stringify({
-                model: "gpt-3.5-turbo",
-                messages: [...messages, { role: "user", content: userMessage }],
-                temperature: 0.7,
-              }),
-            }
-          );
+            const client = new OpenAI({apiKey: `${API_KEY}`});
 
-          console.log("HIHIHIHI")
+            const responsey = await client.chat.completions.create({
+                messages: [{ role: 'user', content: userMessage }],
+                model: 'gpt-4o-mini'
+            }).asResponse();
       
-          if (!response.ok) {
+          if (!responsey.ok) {
+            console.log(responsey.status)
             console.log("I AM RUNNING THIS")
             throw new Error("Oops! Something went wrong while processing your request.");
           }
       
-          const responseData = await response.json();
-          setIsTyping(false);
-          setMessages((prevMessages) => [
-            ...prevMessages,
-            {
-              role: "assistant",
-              content: responseData.choices[0].message.content,
+          const responseData = await responsey.json();
+          //setIsTyping(false);
+          const mess = [{
+            _id: 1,
+            text: responseData.choices[0].message.content,
+            createdAt: new Date(),
+            user: {
+              _id: 3,
+              name: 'User',
+              avatar: 'https://placeimg.com/140/140/any',
             },
-          ]);
+          }];
+
+          setMessages((previousMessages) =>
+            GiftedChat.append(previousMessages, mess)
+          );          
         } catch (error) {
           console.error("Error while fetching chat data:", error);
           setIsTyping(false);
         }
     };
 
-    const handleSendMessage = (messageContent =[]) => {
-        console.log(messageContent)
+    const onSend = useCallback((messagesy = []) => {
+        const messageSent = messagesy[0]["text"]
         setMessages((previousMessages) =>
-            GiftedChat.append(previousMessages, messages)
-        );
-        // setMessages((prevMessages) => [
-        //   ...prevMessages,
-        //   { 
-        //     _id: user?.id,
-        //     text: messageContent["text"],
-        //     createdAt: new Date(),
-        //     user: {
-        //       _id: user?.id,
-        //       name: 'Hello',
-        //       avatar: 'https://placeimg.com/140/140/any',
-        //     },
-        //     },
-        // ]);
-
-        //chatData(messageContent);
-    };
-
-    const onSend = useCallback((messages = []) => {
-        const messageSent = messages[0]["text"]
-        setMessages((previousMessages) =>
-          GiftedChat.append(previousMessages, messages)
+          GiftedChat.append(previousMessages, messagesy)
         );
 
         chatData(messageSent);
