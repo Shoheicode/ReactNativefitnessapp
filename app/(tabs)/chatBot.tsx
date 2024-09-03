@@ -91,8 +91,12 @@ export default function ChatBot() {
             type="text"
             name="input"
             placeholder="Type your message..."
+            disabled={isTyping}
           />
-          <button type="submit">
+          <button 
+            type="submit"
+            disabled={isTyping}
+            >
             Send
           </button>
         </form>
