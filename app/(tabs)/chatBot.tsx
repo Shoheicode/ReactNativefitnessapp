@@ -4,12 +4,12 @@ import OpenAI from "openai";
 import { useCallback, useEffect, useState } from "react";
 import { Text, View } from "react-native";
 import { GiftedChat } from 'react-native-gifted-chat';
-import {OPEN_API_KEY} from '@env'
+import {OPENAI_API_KEY} from '@env'
 //import "./App.css";
 
 export default function ChatBot() {
     // Your OpenAI API key
-    const API_KEY = process.env.OPENAI_API_KEY + "";
+    const API_KEY = OPENAI_API_KEY;
     // Setting the primary prompt as the initial state
     const [messages, setMessages] = useState([{}]);
 
@@ -49,11 +49,11 @@ export default function ChatBot() {
           const responseData = await responsey.json();
           //setIsTyping(false);
           const mess = [{
-            _id: 1,
+            _id: 4,
             text: responseData.choices[0].message.content,
             createdAt: new Date(),
             user: {
-              _id: 3,
+              _id: 5,
               name: 'User',
               avatar: 'https://placeimg.com/140/140/any',
             },
@@ -85,7 +85,7 @@ export default function ChatBot() {
                 messages={messages}
                 onSend={newMessages => onSend(newMessages)}
                 user={{
-                    _id: 1,
+                    _id: 2,
                 }}
             />
         </SignedIn>
