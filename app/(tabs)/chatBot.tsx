@@ -2,9 +2,10 @@
 import { SignedIn, useUser } from "@clerk/clerk-expo";
 import OpenAI from "openai";
 import { useCallback, useEffect, useState } from "react";
-import { Text, View } from "react-native";
+import { Text, View, StyleSheet } from "react-native";
 import { GiftedChat } from 'react-native-gifted-chat';
 import {OPENAI_API_KEY} from '@env'
+import { heightPercentageToDP } from "react-native-responsive-screen";
 //import "./App.css";
 
 export default function ChatBot() {
@@ -81,6 +82,9 @@ export default function ChatBot() {
 
     return (
         <SignedIn>
+            <View style={styles.header}>
+              <Text style={styles.heading}>Chat with AI</Text>
+            </View>
             <GiftedChat
                 messages={messages}
                 onSend={newMessages => onSend(newMessages)}
@@ -91,3 +95,24 @@ export default function ChatBot() {
         </SignedIn>
     );
 }
+
+const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+    backgroundColor: "#fff",
+  },
+  header: {
+    paddingTop: heightPercentageToDP(7),
+    flexDirection: "row",
+    paddingHorizontal: 8,
+    borderBottomWidth: 1,
+    borderBottomColor: "#DDDDDD",
+    paddingVertical: 8,
+    backgroundColor: "#f2f8fc",
+  },
+  heading: {
+    fontWeight: "500",
+    paddingLeft: 16,
+    fontSize: 20,
+  },
+});
