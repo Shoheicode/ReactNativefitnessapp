@@ -123,15 +123,17 @@ export default function Home(){
                 <ImageSlider/>
             </View>
 
-            <View
-                style={
-                    {
-                        display:"flex"
+            <SignedIn>
+                <View
+                    style={
+                        {
+                            display:"flex"
+                        }
                     }
-                }
-            >
-                <GridSections/>
-            </View>
+                >
+                    <GridSections/>
+                </View>
+            </SignedIn>
         </SafeAreaView>
     )
 }
