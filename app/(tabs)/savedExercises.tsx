@@ -1,5 +1,5 @@
 import { StatusBar } from "expo-status-bar";
-import { Button, Image, Text, View, StyleSheet } from "react-native";
+import { Button, Image, Text, View, StyleSheet, TouchableOpacity } from "react-native";
 import { heightPercentageToDP, widthPercentageToDP } from "react-native-responsive-screen";
 import { SafeAreaView } from "react-native-safe-area-context";
 import { Ionicons } from "@expo/vector-icons";
@@ -9,12 +9,28 @@ import { Link, router } from "expo-router";
 import CoolSignInButton from "@/components/CoolSignInButton";
 import GridSections from "@/components/GridSections"
 import { Avatar } from '@rneui/themed';
+import { database } from "../firebase";
+import { useEffect } from "react";
+import { addDoc, collection } from "firebase/firestore";
 
 export default function SavedExercises(){
     const size = 40
 
     const { user } = useUser()
     const { signOut } = useAuth()
+
+    const accessFirebase = async ()=>{
+        try {
+            const docRef = await addDoc(collection(database, "users"), {
+              first: "Ada",
+              last: "Lovelace",
+              born: 1815
+            });
+            console.log("Document written with ID: ", docRef.id);
+          } catch (e) {
+            console.error("Error adding document: ", e);
+          }
+    }
 
     const handleLogout = async () => {
         try {
@@ -28,7 +44,6 @@ export default function SavedExercises(){
 
     return (
         <SafeAreaView>
-            a
             <StatusBar style="dark" />
             {/* punchline and avatar*/}
             <View
@@ -121,7 +136,18 @@ export default function SavedExercises(){
                     }
                 }
             >
-                <ImageSlider/>
+                <TouchableOpacity
+                    style={
+                        {
+                            backgroundColor:"blue",
+                            height:widthPercentageToDP(40),
+                            width: widthPercentageToDP(40)
+                        }
+                    }
+                    onPress={accessFirebase}
+                >
+
+                </TouchableOpacity>
             </View>
 
             <View
