@@ -1,5 +1,7 @@
 // Importing useState
 import { useState } from "react";
+import { Text, View } from "react-native";
+import { GiftedChat } from 'react-native-gifted-chat';
 //import "./App.css";
 
 export default function ChatBot() {
@@ -67,39 +69,9 @@ export default function ChatBot() {
     };
 
 
-    return (<>
-        <div>
-          {messages.map((message, index) => (
-            <div key={index}>
-              <h3>{message.role}</h3>
-              <p>{message.content}</p>
-            </div>
-          ))}
-        </div>
-        <form
-            onSubmit={(e) => {
-                e.preventDefault();
-                const input = e.target.input.value;
-                if (input.trim() !== "") {
-                  handleSendMessage(input);
-                  e.target.reset();
-                }
-              }}
-            aria-label="Chat Input Form"
-        >
-          <input
-            type="text"
-            name="input"
-            placeholder="Type your message..."
-            disabled={isTyping}
-          />
-          <button 
-            type="submit"
-            disabled={isTyping}
-            >
-            Send
-          </button>
-        </form>
-      </>
+    return (
+        <GiftedChat
+            
+        />
     );
 }
