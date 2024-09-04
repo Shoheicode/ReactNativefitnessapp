@@ -7,7 +7,7 @@ import { heightPercentageToDP, widthPercentageToDP } from "react-native-responsi
 const list = [
     {
         name: "Chat Bot",
-        source: require("../assets/images/exerciseImages/back.png"),
+        source: require("../assets/images/profileimages/robotExercising.png"),
         route: '/(tabs)/chatBot',
     },
     {

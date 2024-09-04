@@ -25,7 +25,7 @@ export default function ChatBot() {
             user: {
               _id: 2,
               name: 'Bot',
-              avatar: 'https://placeimg.com/140/140/any',
+              avatar: require('@/assets/images/profileimages/robotExercising.png'),
             },
           },
         ])
