@@ -124,15 +124,15 @@ export default function Home(){
             </View>
 
             <SignedIn>
-                <View
-                    style={
-                        {
-                            display:"flex"
-                        }
+            <View
+                style={
+                    {
+                        display:"flex"
                     }
-                >
-                    <GridSections/>
-                </View>
+                }
+            >
+                <GridSections/>
+            </View>
             </SignedIn>
         </SafeAreaView>
     )
