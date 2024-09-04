@@ -13,6 +13,8 @@ export default function ChatBot() {
     const API_KEY = OPENAI_API_KEY;
     // Setting the primary prompt as the initial state
     const [messages, setMessages] = useState([{}]);
+    let id = 1;
+    let id2 = 2;
 
     useEffect(() => {
         setMessages([
@@ -21,7 +23,7 @@ export default function ChatBot() {
             text: 'Hello, I am the fitness tracker bot',
             createdAt: new Date(),
             user: {
-              _id: 3,
+              _id: 2,
               name: 'Bot',
               avatar: 'https://placeimg.com/140/140/any',
             },
@@ -46,19 +48,23 @@ export default function ChatBot() {
             console.log("I AM RUNNING THIS")
             throw new Error("Oops! Something went wrong while processing your request.");
           }
-      
+
+          id++;
+          id2++;
           const responseData = await responsey.json();
           //setIsTyping(false);
           const mess = [{
-            _id: 4,
+            _id: id,
             text: responseData.choices[0].message.content,
             createdAt: new Date(),
             user: {
-              _id: 5,
-              name: 'User',
+              _id: id2,
+              name: 'Bot',
               avatar: 'https://placeimg.com/140/140/any',
             },
           }];
+
+          console.log(id)
 
           setMessages((previousMessages) =>
             GiftedChat.append(previousMessages, mess)
@@ -79,6 +85,7 @@ export default function ChatBot() {
 
     }, []); 
 
+    const len = user?.id.length
 
     return (
         <SignedIn>
@@ -89,7 +96,7 @@ export default function ChatBot() {
                 messages={messages}
                 onSend={newMessages => onSend(newMessages)}
                 user={{
-                    _id: 2,
+                    _id: len,
                 }}
             />
         </SignedIn>
