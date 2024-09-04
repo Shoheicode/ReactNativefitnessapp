@@ -1,7 +1,7 @@
 {
   "expo": {
     "name": "fitnessapp",
-    "slug": "fitnessapp",
+    "slug": "fitness-app",
     "version": "1.0.0",
     "orientation": "portrait",
     "icon": "./assets/images/icon.png",
@@ -40,8 +40,9 @@
         "origin": false
       },
       "eas": {
-        "projectId": "a27bd668-6799-4090-ab16-bfa5e801482e"
+        "projectId": "ce02298a-53a3-41b8-bbb0-7432662b7d16"
       }
-    }
+    },
+    "owner": "astar_fitness"
   }
 }
