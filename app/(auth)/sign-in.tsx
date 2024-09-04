@@ -1,6 +1,6 @@
 import { useSignIn } from '@clerk/clerk-expo'
 import { Link, useRouter } from 'expo-router'
-import { Text, TextInput, Button, View,StyleSheet, TouchableOpacity } from 'react-native'
+import { Text, TextInput, Button, View,StyleSheet, TouchableOpacity, ScrollView } from 'react-native'
 import React from 'react'
 import { heightPercentageToDP, widthPercentageToDP } from 'react-native-responsive-screen'
 //import { TouchableOpacity } from 'react-native-gesture-handler'
@@ -38,14 +38,14 @@ export default function Page() {
   }, [isLoaded, emailAddress, password])
 
   return (
-    <View style={styles.container}>
+    <ScrollView style={styles.container}>
       <View
         style={styles.inputContainer}
       >
       <TextInput
         style={
           {
-            fontSize: widthPercentageToDP("7%")
+            fontSize: widthPercentageToDP("4%")
           }
         }
         autoCapitalize="none"
@@ -56,7 +56,7 @@ export default function Page() {
       <TextInput
         style={
           {
-            fontSize: widthPercentageToDP("7%")
+            fontSize: widthPercentageToDP("4%")
           }
         }
         value={password}
@@ -70,12 +70,6 @@ export default function Page() {
         >
           <Text style={styles.buttonText}>Sign In</Text>
         </TouchableOpacity>
-      </View>
-      <View 
-        style={
-          styles.inputContainer
-        }
-      >
         {/* <Button title="Sign In" onPress={onSignInPress} /> */}
         <View
           style={{
@@ -85,7 +79,7 @@ export default function Page() {
           <Text
             style={
               {
-                fontSize: heightPercentageToDP(2)
+                fontSize: heightPercentageToDP("3")
               }
             }
           >Don't have an account?</Text>
@@ -99,34 +93,34 @@ export default function Page() {
           </TouchableOpacity>
         </View>
       </View>
-    </View>
+    </ScrollView>
   )
 }
 
 const styles = StyleSheet.create({
   container: {
-    flex: 1,
-    alignItems: "center",
+    //flex: 1,
+    //alignItems: "center",
     //justifyContent: "space-around",
-    padding: widthPercentageToDP("20%"),
+    padding: widthPercentageToDP("5%"),
     backgroundColor: "#fff",
   },
   inputContainer:{
     width: "100%",
-    height: heightPercentageToDP(10),
+    height: heightPercentageToDP(100),
     marginTop: heightPercentageToDP(8)
   },
   button: {
     backgroundColor: "#01a5fc",
     borderRadius: 25,
-    padding: widthPercentageToDP("3%"),
+    padding: widthPercentageToDP("1%"),
     alignItems: "center",
     marginTop: heightPercentageToDP("2.5%"),
-    width: '100%',
+    //width: '100%',
   },
   buttonText: {
     color: "#fff",
     fontWeight: "bold",
-    fontSize: widthPercentageToDP("4%"),
+    fontSize: heightPercentageToDP("3%"),
   }
 })
