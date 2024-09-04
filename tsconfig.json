@@ -13,5 +13,5 @@
     "**/*.tsx",
     ".expo/types/**/*.ts",
     "expo-env.d.ts"
-, "components/ImageSlider.jsx"  ]
+, "components/ImageSlider.jsx", "app/api/chat/route.js"  ]
 }

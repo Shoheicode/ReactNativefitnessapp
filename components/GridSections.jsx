@@ -8,7 +8,7 @@ const list = [
     {
         name: "Chat Bot",
         source: require("../assets/images/exerciseImages/back.png"),
-        route: '/(tabs)/savedExercises',
+        route: '/(tabs)/chatBot',
     },
     {
         name: "Saved Exercises",
