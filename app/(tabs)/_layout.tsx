@@ -5,5 +5,11 @@ export default function AuthRoutesLayout() {
   const { isSignedIn } = useAuth()
 
 
-  return <Stack />
+  return <Stack 
+    screenOptions={
+      {
+        headerShown: true,
+      }
+    }
+  />
 }
